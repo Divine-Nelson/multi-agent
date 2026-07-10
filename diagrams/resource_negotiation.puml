@@ -1,0 +1,39 @@
+@startuml
+title Crane Resource Negotiation
+
+actor "Part Agent" as Part
+participant "Crane Agent" as Crane
+participant "Destination Agent" as Destination
+database "Modbus TCP" as Modbus
+
+Part -> Crane : onNegotiate(transport request)
+
+Crane -> Crane : Check busy state\nreserved, moving,\npending command, vacuum
+
+alt Crane is busy
+    Crane --> Part : Reject request (-1)
+    Part -> Part : Wait and retry
+else Crane is available
+    Crane -> Destination : Request current coordinates
+    Destination --> Crane : Return X, Y location
+
+    Crane -> Crane : Reserve transport resource
+    Crane --> Part : Accept request
+
+    Crane -> Modbus : Move to pickup position
+    Modbus --> Crane : Position reached
+
+    Crane -> Modbus : Activate vacuum
+    Modbus --> Crane : Product attached
+
+    Crane -> Modbus : Move to destination
+    Modbus --> Crane : Destination reached
+
+    Crane -> Modbus : Release product
+    Modbus --> Crane : Product detached
+
+    Crane -> Crane : Clear reservation
+    Crane --> Part : Transport completed
+end
+
+@enduml

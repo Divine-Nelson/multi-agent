@@ -1,0 +1,60 @@
+@startuml
+title Deadlock Prevention Logic
+
+start
+
+:Source requests permission\nto deploy a new part;
+
+if (Process 1 free?) then (yes)
+else (no)
+    :Do not deploy;
+    :Wait and retry;
+    stop
+endif
+
+if (Process 2 waiting\nfor Process 1?) then (yes)
+    :Prioritize Product B\nfrom Process 2;
+    :Do not deploy Product A;
+    stop
+else (no)
+endif
+
+if (Crane idle?) then (yes)
+else (no)
+    :Wait until crane is available;
+    stop
+endif
+
+if (Part already waiting\nfor pickup?) then (yes)
+    :Do not create another part;
+    stop
+else (no)
+endif
+
+:Deploy product;
+
+:Part requests transport;
+
+if (Crane accepts request?) then (yes)
+    :Reserve crane;
+    :Pick product;
+    :Transport product;
+    :Release reservation;
+else (no)
+    :Retry negotiation later;
+endif
+
+stop
+
+note right
+Deadlock prevention mechanisms:
+
+- Process reservation removed
+- Source deployment gated
+- Crane busy-state checks
+- Retry instead of blocking
+- Product B priority when
+  Process 2 must release into Process 1
+end note
+
+@enduml

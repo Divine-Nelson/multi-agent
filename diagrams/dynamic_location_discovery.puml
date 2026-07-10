@@ -1,0 +1,28 @@
+@startuml
+title Dynamic Resource Location Discovery
+
+participant "Part Agent" as Part
+participant "Crane Agent" as Crane
+participant "Source Agent" as Source
+participant "Process Agent" as Process
+
+Part -> Crane : Transport product\nSource → Process
+
+Crane -> Source : getLocation()
+Source --> Crane : sourceX, sourceY
+
+Crane -> Process : getLocation()
+Process --> Crane : processX, processY
+
+Crane -> Crane : Build movement sequence\nusing returned coordinates
+Crane --> Part : Transport accepted
+
+note over Crane
+No hardcoded coordinate table.
+
+Changing Process 1 and Process 2
+locations does not require changes
+to the Crane Agent.
+end note
+
+@enduml

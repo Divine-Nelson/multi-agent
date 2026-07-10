@@ -1,0 +1,47 @@
+@startuml
+title Dynamic Production Routes
+
+skinparam shadowing false
+skinparam activity {
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Black
+}
+
+partition "Product A" {
+    start
+    :Deploy from Source 1;
+    :Request Crane;
+    :Transport to Process 1;
+    :Run Process 1;
+    :Request Crane;
+    :Transport to Sink;
+    stop
+}
+
+partition "Product B" {
+    start
+    :Deploy from Source 2;
+    :Request Crane;
+    :Transport to Process 2;
+    :Run Process 2;
+    :Request Crane;
+    :Transport to Process 1;
+    :Run Process 1;
+    :Request Crane;
+    :Transport to Sink;
+    stop
+}
+
+note right
+The Part Agent determines the route.
+
+The Crane Agent does not know:
+- Product type
+- Production plan
+- Required process sequence
+
+It only receives source and destination coordinates.
+end note
+
+@enduml

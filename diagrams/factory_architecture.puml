@@ -1,0 +1,41 @@
+@startuml
+title Distributed Multi-Agent Manufacturing System
+
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam defaultTextAlignment center
+
+actor "Customer / Operator" as User
+
+component "Optional AI Dispatcher\nPython + LLM" as Dispatcher
+component "Source Agent 1\nProduct A Generation" as Source1
+component "Source Agent 2\nProduct B Generation" as Source2
+component "Crane Agent\nShared Transportation" as Crane
+component "Process Agent 1\nManufacturing Operation" as Process1
+component "Process Agent 2\nManufacturing Operation" as Process2
+component "Sink Agent\nFinished Products" as Sink
+
+database "Modbus TCP\nSensors and Registers" as Modbus
+
+User --> Dispatcher : Production order
+Dispatcher --> Source1 : Generate Product A
+Dispatcher --> Source2 : Generate Product B
+
+Source1 --> Crane : Transport request
+Source2 --> Crane : Transport request
+
+Crane --> Process1 : Move product
+Crane --> Process2 : Move product
+Crane --> Sink : Deliver finished product
+
+Process2 --> Process1 : Product B next operation
+Process1 --> Sink : Completed product
+
+Source1 ..> Modbus
+Source2 ..> Modbus
+Crane ..> Modbus
+Process1 ..> Modbus
+Process2 ..> Modbus
+Sink ..> Modbus
+
+@enduml
