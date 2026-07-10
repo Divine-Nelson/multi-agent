@@ -3,7 +3,7 @@
 > A decentralized manufacturing control system using autonomous agents, dynamic resource negotiation, runtime location discovery, deadlock prevention, and Modbus TCP communication.
 
 <p align="center">
-  <img src="images/hero.png" alt="Distributed Multi-Agent Manufacturing System" width="100%">
+  <img src="docs/diagrams/hero.png" alt="Distributed Multi-Agent Manufacturing System" width="100%">
 </p>
 
 <p align="center">
@@ -179,7 +179,7 @@ The simulated manufacturing cell contains:
 * A Modbus TCP communication layer
 
 <p align="center">
-  <img src="images/simulation.png" alt="Manufacturing simulation" width="100%">
+  <img src="docs/diagrams/simulation.png" alt="Manufacturing simulation" width="100%">
 </p>
 
 Each physical module is paired with an autonomous software agent.
@@ -193,7 +193,7 @@ The physical simulation provides the manufacturing equipment, sensors, movement,
 The following diagram presents the high-level relationship between production requests, manufacturing resources, transport, processing, and industrial communication.
 
 <p align="center">
-  <img src="images/factory_architecture.svg" alt="Factory architecture" width="90%">
+  <img src="docs/diagrams/factory_architecture.svg" alt="Factory architecture" width="90%">
 </p>
 
 At a high level, the system follows this flow:
@@ -221,7 +221,7 @@ The actual production route depends on the product type and is controlled by the
 Each manufacturing component is implemented as an autonomous CMAS agent.
 
 <p align="center">
-  <img src="images/cmas_architecture.png" alt="CMAS multi-agent architecture" width="100%">
+  <img src="docs/diagrams/cmas_architecture.png" alt="CMAS multi-agent architecture" width="100%">
 </p>
 
 Every agent contains its own:
@@ -260,7 +260,7 @@ This architecture reduces coupling and allows components to evolve independently
 Different products follow different manufacturing plans.
 
 <p align="center">
-  <img src="images/product_routes.svg" alt="Product A and Product B routes" width="85%">
+  <img src="docs/diagrams/product_routes.svg" alt="Product A and Product B routes" width="85%">
 </p>
 
 ## Product A
@@ -311,7 +311,7 @@ The crane does not contain a hardcoded coordinate table.
 Instead, it requests the current position of each manufacturing module at runtime.
 
 <p align="center">
-  <img src="images/dynamic_location_discovery.svg" alt="Dynamic location discovery" width="85%">
+  <img src="docs/diagrams/dynamic_location_discovery.svg" alt="Dynamic location discovery" width="85%">
 </p>
 
 The process works as follows:
@@ -352,7 +352,7 @@ The crane is a shared manufacturing resource.
 Before transportation begins, the requesting agent negotiates access with the crane.
 
 <p align="center">
-  <img src="images/resource_negotiation.svg" alt="Crane resource negotiation" width="90%">
+  <img src="docs/diagrams/resource_negotiation.svg" alt="Crane resource negotiation" width="90%">
 </p>
 
 The crane checks whether it is currently:
@@ -384,7 +384,7 @@ This prevents two products from being picked up at the same time.
 The most significant challenge in the project was preventing deadlocks caused by competing products and shared resources.
 
 <p align="center">
-  <img src="images/deadlock_prevention.svg" alt="Deadlock prevention logic" width="90%">
+  <img src="docs/diagrams/deadlock_prevention.svg" alt="Deadlock prevention logic" width="90%">
 </p>
 
 ## Original Failure Scenario
@@ -468,7 +468,7 @@ Industrial signals represent:
 * Product-generation commands
 
 <p align="center">
-  <img src="images/modbus_signals.png" alt="Modbus TCP signals" width="100%">
+  <img src="docs/diagrams/modbus_signals.png" alt="Modbus TCP signals" width="100%">
 </p>
 
 The software agents read and write Modbus values to coordinate the physical simulation.
@@ -491,7 +491,7 @@ The Modbus layer allows the project to model realistic interaction between distr
 An optional AI-assisted dispatcher was developed to demonstrate how natural-language production requests could be integrated with the manufacturing system.
 
 <p align="center">
-  <img src="images/dispatcher_workflow.svg" alt="AI dispatcher workflow" width="85%">
+  <img src="docs/diagrams/dispatcher_workflow.svg" alt="AI dispatcher workflow" width="85%">
 </p>
 
 Example request:
@@ -839,7 +839,7 @@ Distributed-Multi-Agent-Manufacturing-System/
 │   ├── Design_Decisions.md
 │   └── Lessons_Learned.md
 │
-├── images/
+├── diagrams/
 │   ├── hero.png
 │   ├── simulation.png
 │   ├── cmas_architecture.png
