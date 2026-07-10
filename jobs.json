@@ -1,0 +1,12 @@
+{
+    "orders": [
+        {
+            "partType": 1,
+            "quantity": 10
+        },
+        {
+            "partType": 2,
+            "quantity": 5
+        }
+    ]
+}

@@ -1,0 +1,3 @@
+ProductA,ProductA_1,1
+ProductA,ProductA_2,1
+ProductB,ProductB_1,2
