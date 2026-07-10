@@ -1,0 +1,42 @@
+@startuml
+title Modbus TCP Communication Architecture
+
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam defaultTextAlignment center
+
+package "CMAS Agents" {
+
+component "Source Agent" as Source
+component "Crane Agent" as Crane
+component "Process 1 Agent" as P1
+component "Process 2 Agent" as P2
+component "Sink Agent" as Sink
+
+}
+
+database "Modbus TCP Server" as Modbus
+
+package "Manufacturing Cell" {
+
+component "Source Sensors"
+component "Process Sensors"
+component "Crane"
+component "Processing Stations"
+component "Sink"
+
+}
+
+Source --> Modbus : Read / Write
+Crane --> Modbus : Read / Write
+P1 --> Modbus : Read / Write
+P2 --> Modbus : Read / Write
+Sink --> Modbus : Read / Write
+
+Modbus --> "Source Sensors"
+Modbus --> "Process Sensors"
+Modbus --> Crane
+Modbus --> "Processing Stations"
+Modbus --> Sink
+
+@enduml

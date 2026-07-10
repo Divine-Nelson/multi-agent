@@ -1,0 +1,67 @@
+@startuml
+title AI-Assisted Production Dispatcher
+
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam activity {
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Black
+}
+
+start
+
+:Production Request;
+
+note right
+Example:
+"Produce 2 Product A
+and 1 Product B"
+end note
+
+:Large Language Model;
+
+:Structured JSON Order;
+
+note right
+
+{
+  "orders":[
+      {
+         "partType":1,
+         "quantity":2
+      },
+      {
+         "partType":2,
+         "quantity":1
+      }
+  ]
+}
+
+end note
+
+:Python Dispatcher;
+
+:Production Queue;
+
+repeat
+
+:Check Manufacturing State;
+
+if (Safe to Deploy?) then (Yes)
+
+:Activate Modbus Signal;
+
+:Generate Product;
+
+else (No)
+
+:Wait;
+
+endif
+
+repeat while (Orders Remaining?)
+
+stop
+
+@enduml
