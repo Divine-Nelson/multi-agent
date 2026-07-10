@@ -468,7 +468,7 @@ Industrial signals represent:
 * Product-generation commands
 
 <p align="center">
-  <img src="images/modbus_signals.png" alt="Modbus TCP signals" width="100%">
+  <img src="images/modbus_architecture.png" alt="Modbus TCP signals" width="100%">
 </p>
 
 The software agents read and write Modbus values to coordinate the physical simulation.
