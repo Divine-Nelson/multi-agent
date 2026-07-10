@@ -193,7 +193,7 @@ The physical simulation provides the manufacturing equipment, sensors, movement,
 The following diagram presents the high-level relationship between production requests, manufacturing resources, transport, processing, and industrial communication.
 
 <p align="center">
-  <img src="docs/diagrams/factory_architecture.svg" alt="Factory architecture" width="90%">
+  <img src="docs/diagrams/factory_architecture.png" alt="Factory architecture" width="90%">
 </p>
 
 At a high level, the system follows this flow:
@@ -260,7 +260,7 @@ This architecture reduces coupling and allows components to evolve independently
 Different products follow different manufacturing plans.
 
 <p align="center">
-  <img src="docs/diagrams/product_routes.svg" alt="Product A and Product B routes" width="85%">
+  <img src="docs/diagrams/product_routes.png" alt="Product A and Product B routes" width="85%">
 </p>
 
 ## Product A
@@ -311,7 +311,7 @@ The crane does not contain a hardcoded coordinate table.
 Instead, it requests the current position of each manufacturing module at runtime.
 
 <p align="center">
-  <img src="docs/diagrams/dynamic_location_discovery.svg" alt="Dynamic location discovery" width="85%">
+  <img src="docs/diagrams/dynamic_location_discovery.png" alt="Dynamic location discovery" width="85%">
 </p>
 
 The process works as follows:
@@ -352,7 +352,7 @@ The crane is a shared manufacturing resource.
 Before transportation begins, the requesting agent negotiates access with the crane.
 
 <p align="center">
-  <img src="docs/diagrams/resource_negotiation.svg" alt="Crane resource negotiation" width="90%">
+  <img src="docs/diagrams/resource_negotiation.png" alt="Crane resource negotiation" width="90%">
 </p>
 
 The crane checks whether it is currently:
@@ -384,7 +384,7 @@ This prevents two products from being picked up at the same time.
 The most significant challenge in the project was preventing deadlocks caused by competing products and shared resources.
 
 <p align="center">
-  <img src="docs/diagrams/deadlock_prevention.svg" alt="Deadlock prevention logic" width="90%">
+  <img src="docs/diagrams/deadlock_prevention.png" alt="Deadlock prevention logic" width="90%">
 </p>
 
 ## Original Failure Scenario
@@ -491,7 +491,7 @@ The Modbus layer allows the project to model realistic interaction between distr
 An optional AI-assisted dispatcher was developed to demonstrate how natural-language production requests could be integrated with the manufacturing system.
 
 <p align="center">
-  <img src="docs/diagrams/dispatcher_workflow.svg" alt="AI dispatcher workflow" width="85%">
+  <img src="docs/diagrams/dispatcher_workflow.png" alt="AI dispatcher workflow" width="85%">
 </p>
 
 Example request:
@@ -843,13 +843,13 @@ Distributed-Multi-Agent-Manufacturing-System/
 │   ├── hero.png
 │   ├── simulation.png
 │   ├── cmas_architecture.png
-│   ├── factory_architecture.svg
-│   ├── product_routes.svg
-│   ├── resource_negotiation.svg
-│   ├── dynamic_location_discovery.svg
-│   ├── deadlock_prevention.svg
+│   ├── factory_architecture.png
+│   ├── product_routes.png
+│   ├── resource_negotiation.png
+│   ├── dynamic_location_discovery.png
+│   ├── deadlock_prevention.png
 │   ├── modbus_signals.png
-│   └── dispatcher_workflow.svg
+│   └── dispatcher_workflow.png
 │
 └── simulation/
 ```
