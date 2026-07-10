@@ -764,24 +764,29 @@ The final architecture satisfies the central design goal:
 * Resource negotiation
 * Decentralized planning
 
-## Industrial Automation
+# Industrial Communication
 
-* Modbus TCP
-* Industrial simulation
-* Sensors and actuators
-* Process-state control
-* Crane movement
-* Vacuum control
+The manufacturing system communicates through **Modbus TCP**, allowing autonomous software agents to interact with the simulated manufacturing equipment using industrial communication protocols.
 
-## Software Engineering
+<p align="center">
+<img src="images/modbus_architecture.png" width="90%">
+</p>
 
-* Distributed systems
-* Concurrent execution
-* State machines
-* Separation of concerns
-* Runtime configuration
-* Modular architecture
-* Deadlock prevention
+Each manufacturing agent exchanges information through Modbus registers rather than direct function calls.
+
+The communication layer exposes industrial signals such as:
+
+- Product source sensors
+- Process proximity sensors
+- Process running state
+- Crane coordinates
+- Crane movement commands
+- Vacuum activation
+- Product generation requests
+
+This architecture closely resembles communication patterns used in industrial automation systems where software controllers interact with PLCs and field devices through standardized industrial protocols.
+
+Separating the communication layer from the agent logic improves modularity and makes the system easier to extend or integrate with physical equipment.
 
 ## AI Extension
 
